@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const notes = require('../db/db.json');
 const uuid = require('uuid');
+const { request } = require('express');
 
 router.get('/notes', (req, res) => {
   res.json(notes);
@@ -23,6 +24,8 @@ router.post('/notes',(req, res) => {
 });
 
 router.delete('/notes/:id', (req, res) => {
+deleteNote(notes, req.params.id);
+  res.json(notes);
 });
 
 module.exports = router;
